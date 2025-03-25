@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123"  # HTTP interface
+      - "9000:9000"  # Native ClickHouse interface
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    environment:
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=password
+      - CLICKHOUSE_DB=otel
+
+volumes:
+  clickhouse_data: 
