@@ -1,0 +1,7 @@
+INSERT INTO otel.otel_traces
+(Timestamp, TraceId, SpanId, ParentSpanId, SpanName, SpanKind, ServiceName, ResourceAttributes, SpanAttributes, Duration, StatusCode, StatusMessage)
+VALUES
+('2025-03-25 03:40:00', '0af7651916cd43dd8448eb211c80319c', '00f067aa0ba902b7', '', 'parent-operation-0', 'INTERNAL', 'clickhouse-demo-service', '{"service.name":"clickhouse-demo-service","service.version":"0.1.0"}', '{"custom.attribute":"custom-value"}', 150000000, 0, ''),
+('2025-03-25 03:40:00', '0af7651916cd43dd8448eb211c80319c', 'f9416377864f3c96', '00f067aa0ba902b7', 'child-operation-0', 'INTERNAL', 'clickhouse-demo-service', '{"service.name":"clickhouse-demo-service","service.version":"0.1.0"}', '{"child.number":0,"random.value":0.5}', 30000000, 0, ''),
+('2025-03-25 03:40:00', '0af7651916cd43dd8448eb211c80319c', '1b2641e78392e326', '00f067aa0ba902b7', 'child-operation-1', 'INTERNAL', 'clickhouse-demo-service', '{"service.name":"clickhouse-demo-service","service.version":"0.1.0"}', '{"child.number":1,"random.value":0.75}', 40000000, 0, ''),
+('2025-03-25 03:40:00', '0af7651916cd43dd8448eb211c80319c', 'eb84fc12c7cb5637', '00f067aa0ba902b7', 'child-operation-2', 'INTERNAL', 'clickhouse-demo-service', '{"service.name":"clickhouse-demo-service","service.version":"0.1.0"}', '{"child.number":2,"random.value":0.25}', 20000000, 0, ''); 
