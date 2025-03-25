@@ -28,10 +28,40 @@ This will start a ClickHouse server on port 9000 (native protocol) and 8123 (HTT
 ### 2. Run the Demo Application
 
 ```bash
+# Run the simulated example (default)
 go run cmd/main.go
+
+# Run the more realistic implementation
+go run cmd/main.go -example=real
+
+# Show help
+go run cmd/main.go -help
 ```
 
-This will generate spans and send them to ClickHouse. The application will continue running and generating spans until interrupted (Ctrl+C).
+The demo offers two examples:
+
+1. **Simulation Example (`-example=sim`)**: A simpler implementation that simulates what collex would do with the ClickHouse exporter. It generates spans continuously until interrupted with Ctrl+C.
+
+2. **Real Implementation Example (`-example=real`)**: A more realistic implementation that's closer to how collex actually works with the ClickHouse exporter. It generates a fixed number of spans and then exits.
+
+Both examples demonstrate the key steps for using collex with the ClickHouse exporter.
+
+### Simulated Exporter Considerations
+
+The demo includes a simulated version of what collex would actually do. In a real implementation:
+
+1. collex would use the transmute package to convert OpenTelemetry SDK spans to the format expected by the ClickHouse exporter
+2. The real exporter would establish a connection to ClickHouse and insert the spans into the database
+
+For demonstration purposes, we've included detailed comments showing how you would use collex in a real application.
+
+## Implementation Notes
+
+Due to API compatibility issues, some parts of the code are commented out or simplified. In a real production application, you would:
+
+1. Import the actual collex library
+2. Properly handle connection errors and shutdown procedures
+3. Use the appropriate version of dependencies that work together
 
 ## How It Works
 
